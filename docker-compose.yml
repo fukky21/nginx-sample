@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    command: yarn dev
+    volumes:
+      - ./api:/app
+    tty: true
+    ports:
+      - '3080:3080'
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    command: yarn dev
+    volumes:
+      - ./web:/app
+    tty: true
+    environment:
+      PORT: 3000
+      HOST: 0.0.0.0
+    ports:
+      - '3000:3000'
