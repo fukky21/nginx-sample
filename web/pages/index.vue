@@ -13,24 +13,19 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
 
+interface IUser {
+  id: number;
+  name: string;
+  email: string;
+}
+
 @Component
 export default class IndexPage extends Vue {
-  users = [
-    {
-      id: 1,
-      name: 'Tom',
-      email: 'tom@example.com'
-    },
-    {
-      id: 2,
-      name: 'Aki',
-      email: 'aki@example.com'
-    },
-    {
-      id: 3,
-      name: 'Keiko',
-      email: 'keiko@example.com'
-    }
-  ];
+  users: IUser[] = [];
+
+  async created(): Promise<void> {
+    const data = await this.$axios.$get('/api/users');
+    this.users = data.users;
+  }
 }
 </script>
