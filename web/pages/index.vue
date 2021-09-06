@@ -24,7 +24,7 @@ export default class IndexPage extends Vue {
   users: IUser[] = [];
 
   async created(): Promise<void> {
-    const data = await this.$axios.$get('/api/users');
+    const data = await this.$axios.$get('/api/v1/users');
     this.users = data.users;
   }
 }

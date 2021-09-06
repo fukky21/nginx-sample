@@ -45,7 +45,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/users', (_, res) => {
+app.get('/api/v1/users', (_, res) => {
   res.status(200).json({ 'users': users });
 });
 

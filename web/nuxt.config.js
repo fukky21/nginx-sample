@@ -49,15 +49,14 @@ export default {
     proxy: true
   },
 
-  proxy: {
-    '/api/': {
-      target: 'http://nginx-sample_api_1:3080',
-      pathRewrite: {'^/api/': ''}
-    }
-  },
+  proxy: { '/api/': 'http://nginx-sample_api_1:3080' },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [/^element-ui/],
+  },
+
+  router: {
+    base: '/app/'
   }
 }
