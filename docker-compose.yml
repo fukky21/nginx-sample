@@ -6,22 +6,25 @@ services:
       - ./proxy/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - '80:80'
+    depends_on:
+      - api
+      - web
 
   api:
     build:
       context: ./api
       dockerfile: Dockerfile
+    container_name: nginx-sample_api
     command: yarn dev
     volumes:
       - ./api:/app
     tty: true
-    ports:
-      - '3080:3080'
 
   web:
     build:
       context: ./web
       dockerfile: Dockerfile
+    container_name: nginx-sample_web
     command: yarn dev
     volumes:
       - ./web:/app
@@ -29,5 +32,3 @@ services:
     environment:
       PORT: 3000
       HOST: 0.0.0.0
-    ports:
-      - '3000:3000'

@@ -49,7 +49,7 @@ export default {
     proxy: true
   },
 
-  proxy: { '/api/': 'http://nginx-sample_api_1:3080' },
+  proxy: { '/api/': 'http://nginx-sample_api:3080' },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
