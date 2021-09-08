@@ -45,7 +45,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/api/v1/users', (_, res) => {
+app.get('/api/v1/users', (req, res) => {
+  // リクエストヘッダーの中身を確認する
+  console.log(req.headers);
   res.status(200).json({ 'users': users });
 });
 
