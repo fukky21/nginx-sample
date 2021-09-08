@@ -2,8 +2,10 @@ FROM node:14.17.6
 
 WORKDIR /app
 
-COPY . .
+COPY package.json .
 
 RUN yarn install
+
+COPY . .
 
 EXPOSE 3080
