@@ -6,6 +6,7 @@ services:
     volumes:
       - ./proxy/nginx.conf:/etc/nginx/nginx.conf
       - ./proxy/html:/etc/nginx/html
+      - ./proxy/log:/var/log/nginx
     ports:
       - '80:80'
     depends_on:
